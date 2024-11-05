@@ -5,7 +5,7 @@ using TMPro;
 public class DialoguePanel : MonoBehaviour
 {
     // TODO: Make dialogue text scroll over time
-
+    public TextMeshProUGUI speakerNameBox;
     public TextMeshProUGUI dialogueBox;
 
     public string speakerName;
@@ -16,15 +16,22 @@ public class DialoguePanel : MonoBehaviour
     public void OnActivate()
     {
         if (this.gameObject.activeInHierarchy) { return; }
-        ShowNextDialogue();
-        gameObject.SetActive(true);
+        ++currentIndex;
+        if (currentIndex < dialogueStack.Count)
+        {
+            speakerNameBox.text = speakerName;
+            ShowNextDialogue();
+            gameObject.SetActive(true);
+        }
+
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (dialogueStack.Count >= currentIndex + 1)
+            ++currentIndex;
+            if (currentIndex < dialogueStack.Count)
             {
                 ShowNextDialogue();
             }
@@ -38,12 +45,7 @@ public class DialoguePanel : MonoBehaviour
 
     private void ShowNextDialogue()
     {
-        currentIndex++;
-        if (dialogueStack.Count >= currentIndex)
-        {
-
-            dialogueBox.text = dialogueStack[currentIndex];
-        }
+        dialogueBox.text = dialogueStack[currentIndex];
     }
 
     public void OnDeactivate()
