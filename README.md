@@ -2,6 +2,8 @@
 
 <h2>About This Project</h2>
 
+<p> This will be a cozy adventure game about an amputee who makes prosthetics. The materials will be collected by exploring the wilderness outside the city and through the shop.</p>
+
 <h2> Built With </h2>
 
 <h2> Contributors </h2>
