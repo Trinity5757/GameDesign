@@ -20,8 +20,8 @@ public class DialoguePanel : MonoBehaviour
         if (currentIndex < dialogueStack.Count)
         {
             speakerNameBox.text = speakerName;
-            ShowNextDialogue();
             gameObject.SetActive(true);
+            ShowNextDialogue();
         }
 
     }
@@ -45,13 +45,26 @@ public class DialoguePanel : MonoBehaviour
 
     private void ShowNextDialogue()
     {
-        dialogueBox.text = dialogueStack[currentIndex];
+        //dialogueBox.text = dialogueStack[currentIndex];
+        StartCoroutine(ScrollingText(dialogueStack[currentIndex], 0.05f));
     }
 
     public void OnDeactivate()
     {
         gameObject.SetActive(false);
         currentIndex = -1;
+    }
+
+    private IEnumerator ScrollingText(string currentChunk, float pause)
+    {
+        int i = 0;
+        dialogueBox.text = "";
+        while (i < currentChunk.Length)
+        {
+            dialogueBox.text += currentChunk[i];
+            i++;
+            yield return new WaitForSecondsRealtime(pause);
+        }
     }
 
 }
