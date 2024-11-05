@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance; 
+    
     public CharacterController controller;
  
     public float speed = 12f;
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
+        instance = this;
         controls = new PlayerControls();
     }
     
