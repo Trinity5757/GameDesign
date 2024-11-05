@@ -2,22 +2,50 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
     public float InteractRange = 5f;
-    
     InteractableObject currentInteractable;
+    private PlayerControls controls;
+
+    private void Awake()
+    {
+        controls = new PlayerControls();
+    }
+    
+    private void OnEnable()
+    {
+        controls.Player.Interact.performed += OnInteract; // Listen for the Interact action
+        controls.Enable();
+    }
+
+    private void OnDisable()
+    {
+        controls.Player.Interact.performed -= OnInteract; // Remove listener when disabled
+        controls.Disable();
+    }
 
     private void Update()
     {
         CheckInteraction();
+        /* old input 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable!= null) //TODO: Change this hardcoded input 
         {
             currentInteractable.Interact();
+        } 
+        */ 
+    }
+    
+    private void OnInteract(InputAction.CallbackContext context)
+    {
+        if (currentInteractable != null)
+        {
+            currentInteractable.Interact(); // Trigger the interaction
         }
     }
-
+    
 
     void CheckInteraction()
     {
