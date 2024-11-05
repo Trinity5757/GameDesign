@@ -1,39 +1,78 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-interface IInteractable
-{
-    public void Interact();
-}
-
-
 public class Interactor : MonoBehaviour
 {
-    public Transform InteractSource;
-    public float InteractRange;
+    public float InteractRange = 5f;
     
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    InteractableObject currentInteractable;
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)) // Check to see if player is pressing E  
+        CheckInteraction();
+        if (Input.GetKeyDown(KeyCode.E) && currentInteractable!= null) //TODO: Change this hardcoded input 
         {
-            Ray ray = new Ray(InteractSource.position, InteractSource.forward); //a raycast is created with position and direction of source
-            if (Physics.Raycast(ray, out RaycastHit hitInfo, InteractRange)) 
-            {
-                if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj)) //if object is hit, we attempt to use the interact method 
-                {
-                    interactObj.Interact();
-                }
-            }
+            currentInteractable.Interact();
         }
     }
+
+
+    void CheckInteraction()
+    {
+        RaycastHit hit;
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+
+        if (Physics.Raycast(ray, out hit, InteractRange))
+        {
+            if (hit.collider.gameObject.CompareTag("Interactable"))
+            {
+                InteractableObject newInteractable = hit.collider.GetComponent<InteractableObject>();
+
+                //check to see if current interactable is not the new interactable 
+                if (currentInteractable && newInteractable != currentInteractable)
+                {
+                    currentInteractable.DisableOutline();
+                }
+                
+                if (newInteractable.enabled)
+                {
+                    setNewCurrentInteractable(newInteractable);
+                }
+                else // if new interactable is not enabled 
+                {
+                    disableCurrentInteractable();
+                }
+            }
+            else //if not interactable
+            {
+                disableCurrentInteractable();
+            }
+        }
+        else //does not hit anything
+        {
+            disableCurrentInteractable();
+        }
+    }
+
+
+    void setNewCurrentInteractable(InteractableObject newInteractable)
+    {
+        currentInteractable = newInteractable;
+        currentInteractable.EnableOutline();
+        HUDController.instance.EnableInteractionText(currentInteractable.message);
+    }
+
+    void disableCurrentInteractable()
+    {
+        HUDController.instance.DisableInteractionText();
+        if (currentInteractable)
+        {
+            currentInteractable.DisableOutline();
+            currentInteractable = null;
+        }
+    }
+    
+    
 }
