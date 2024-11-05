@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2f;
         }
  
-        float x = Input.GetAxis("Horizontal");
+        float x = Input.GetAxis("Horizontal"); //TODO: change this to the new input system 
         float z = Input.GetAxis("Vertical");
  
         //right is the red Axis, foward is the blue axis
