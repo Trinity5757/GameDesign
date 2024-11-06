@@ -380,7 +380,7 @@ MonoBehaviour:
   - This GitHub...
   - ... needs a hero.
   - /githubHero.png
-  currentIndex: -1
+  delayBetweenCharacters: 0.05
 --- !u!1 &295669346
 GameObject:
   m_ObjectHideFlags: 0

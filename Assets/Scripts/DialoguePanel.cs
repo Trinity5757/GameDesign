@@ -12,6 +12,8 @@ public class DialoguePanel : MonoBehaviour
     public List<string> dialogueStack;
     private int currentIndex; // index of the current dialogue chunk that is loaded.
 
+    [Range(0.02f, 0.1f)]
+    public float delayBetweenCharacters;
     public void OnActivate()
     {
         if (this.gameObject.activeInHierarchy) { return; }
@@ -63,7 +65,7 @@ public class DialoguePanel : MonoBehaviour
         {
             dialogueBox.text += currentChunk[i];
             i++;
-            yield return new WaitForSecondsRealtime(pause);
+            yield return new WaitForSecondsRealtime(delayBetweenCharacters);
         }
     }
 
