@@ -9,14 +9,13 @@ public class DialoguePanel : MonoBehaviour
     public TextMeshProUGUI dialogueBox;
 
     public string speakerName;
-
     public List<string> dialogueStack;
-    public int currentIndex; // index of the current dialogue chunk that is loaded.
+    private int currentIndex; // index of the current dialogue chunk that is loaded.
 
     public void OnActivate()
     {
         if (this.gameObject.activeInHierarchy) { return; }
-        ++currentIndex;
+        currentIndex = 0;
         if (currentIndex < dialogueStack.Count)
         {
             speakerNameBox.text = speakerName;
@@ -46,6 +45,7 @@ public class DialoguePanel : MonoBehaviour
     private void ShowNextDialogue()
     {
         //dialogueBox.text = dialogueStack[currentIndex];
+        StopAllCoroutines();
         StartCoroutine(ScrollingText(dialogueStack[currentIndex], 0.05f));
     }
 
