@@ -373,8 +373,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61db4c5a14150534688eeefb533a2135, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speakerName: 
-  dialogueStack: []
+  speakerNameBox: {fileID: 688578105}
+  dialogueBox: {fileID: 569841656}
+  speakerName: Wisdom Giver
+  dialogueStack:
+  - This GitHub...
+  - ... needs a hero.
+  - /githubHero.png
+  delayBetweenCharacters: 0.05
 --- !u!1 &295669346
 GameObject:
   m_ObjectHideFlags: 0
