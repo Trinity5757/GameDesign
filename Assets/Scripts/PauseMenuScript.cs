@@ -13,7 +13,7 @@ public class PauseMenu : MonoBehaviour
     //Will update the game to check to see if it is paused 
     void Update()
     {
-        if(Input.getKeyDown(KeyCode.Escape))
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
             if(GameIsPaused)
             {
@@ -28,15 +28,15 @@ public class PauseMenu : MonoBehaviour
     //Will allow the user to resume the game 
     public void ResumeGame()
     {
-        pauseMenuUI.setActive(false);
+        pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameIsPaused = false;
     }
 
     //Will pause the game
-        public void ResumeGame()
+        public void PauseGame()
     {
-        pauseMenuUI.setActive(true);
+        pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
     }
