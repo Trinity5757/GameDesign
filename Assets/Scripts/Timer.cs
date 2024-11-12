@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+
+//This is the timer. It will complete the dynamic difficulty requirement
+//This is the base code for the timer
 public class Timer : MonoBehaviour
 {
 
