@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class Timer : MonoBehaviour
     //A float to reference the timer.
     public float timeRemaining = 30f;
     //Having the timer be set to the screen
-    public Text timderText;
+    public Text timerText;
+
+    bool timerIsRunning = false;
     // Start is called before the first frame update
     void Start()
     {
