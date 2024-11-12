@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9620f8c34305754d8cc9a7e49e852d9, type: 3}
+  m_Name: UI_es
+  m_EditorClassIdentifier: 
+  m_LocaleId:
+    m_Code: es
+  m_SharedData: {fileID: 11400000, guid: e9ae06a07df90a940aecd7b74fe4325a, type: 2}
+  m_Metadata:
+    m_Items: []
+  m_TableData:
+  - m_Id: 55115796480
+    m_Localized: Jugar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33415687065600
+    m_Localized: Ajustes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 33543688835072
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37033857273856
+    m_Localized: Modo Daltonismo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37350145544192
+    m_Localized: Activar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 37749996933120
+    m_Localized: Desactivar
+    m_Metadata:
+      m_Items: []
+  - m_Id: 38782642966528
+    m_Localized: Idioma
+    m_Metadata:
+      m_Items: []
+  - m_Id: 39979210788864
+    m_Localized: Configuracion Controlador
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41228945608704
+    m_Localized: Mano Izquierda
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41368892755968
+    m_Localized: Mano Derecha
+    m_Metadata:
+      m_Items: []
+  - m_Id: 41467224018944
+    m_Localized: Dos Manos
+    m_Metadata:
+      m_Items: []
+  - m_Id: 42244961226752
+    m_Localized: Guardar y Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 46164748029952
+    m_Localized: Protanomalia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 47518463840256
+    m_Localized: Deuteranomalia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48270817120256
+    m_Localized: Tritanomalia
+    m_Metadata:
+      m_Items: []
+  - m_Id: 48753501818880
+    m_Localized: Achromatomalia
+    m_Metadata:
+      m_Items: []
+  references:
+    version: 2
+    RefIds: []
