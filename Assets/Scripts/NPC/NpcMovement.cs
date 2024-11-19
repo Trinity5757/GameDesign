@@ -14,19 +14,23 @@ public class NpcMovement : MonoBehaviour
         // TODO: Implement walking in a line
         // TODO: Implement pause
         rb = GetComponent<Rigidbody>();
-        yield return StartCoroutine(Walk(2f));
-        yield return StartCoroutine(Pause(1f));
-        yield return StartCoroutine(Walk(2f));
+        float walkTime = Random.Range(2f, 4f);
+        yield return StartCoroutine(Walk(walkTime));
+        float pauseTime = Random.Range(1.5f, 3f);
+        yield return StartCoroutine(Pause(pauseTime));
+        walkTime = Random.Range(2f, 4f);
+        yield return StartCoroutine(Walk(walkTime));
     }
 
     private IEnumerator Walk(float walkTime)
     {
         // Walk only while not directly in front of anything. Check this only every 0.2f seconds through the walkTime.
         float timeElapsed = 0f;
+        Debug.Log("Started walking");
         while (timeElapsed < walkTime)
         {
             timeElapsed += Time.deltaTime;
-            rb.AddForce(Vector3.forward, ForceMode.Force);
+            rb.AddForce(transform.forward * 8, ForceMode.Force);
             yield return new WaitForFixedUpdate();
         }
         
@@ -34,6 +38,7 @@ public class NpcMovement : MonoBehaviour
 
     private IEnumerator Pause(float waitTime)
     {
+        Debug.Log("Started Pausing");
         yield return new WaitForSecondsRealtime(waitTime);
     }
 }
