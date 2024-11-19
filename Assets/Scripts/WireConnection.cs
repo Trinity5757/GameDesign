@@ -23,8 +23,8 @@ public class WireConnection : MonoBehaviour
         MoveWire();
         if (lineRenderer != null)
         {
-            lineRenderer.SetPosition(3, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
-            lineRenderer.SetPosition(2, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
+            lineRenderer.SetPosition(0, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
+            lineRenderer.SetPosition(1, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
         }
     }
 
@@ -49,7 +49,15 @@ public class WireConnection : MonoBehaviour
     void OnMouseUp()
     {
         mouseDown = false;
-        gameObject.transform.position = powerWireStates.startingPosition;
+        if(!powerWireStates.connected)
+        {
+            transform.position = powerWireStates.startingPosition;
+        }
+        if(powerWireStates.connected)
+        {
+            transform.position = powerWireStates.connectedPosition;
+        }
+
     }
 
     void MoveWire()
@@ -59,7 +67,7 @@ public class WireConnection : MonoBehaviour
             powerWireStates.moving = true;
             Vector3 mousePosition = Input.mousePosition;
             mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+            transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
             // gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, transform.parent.transform.position.z);
         }
         else
