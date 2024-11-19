@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "com.sohne.colorblindness": "https://github.com/SOHNE/Colorblindness.git#upm",
+    "com.unity.2d.sprite": "1.0.0",
+    "com.unity.2d.spriteshape": "9.0.5",
     "com.unity.collab-proxy": "2.5.2",
     "com.unity.feature.development": "1.0.1",
     "com.unity.inputsystem": "1.7.0",
