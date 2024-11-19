@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class NpcMovement : MonoBehaviour
 {
-
+    public float walkSpeed = 7f;
     private Rigidbody rb;
 
     private IEnumerator Start()
@@ -14,12 +14,30 @@ public class NpcMovement : MonoBehaviour
         // TODO: Implement walking in a line
         // TODO: Implement pause
         rb = GetComponent<Rigidbody>();
-        float walkTime = Random.Range(2f, 4f);
-        yield return StartCoroutine(Walk(walkTime));
-        float pauseTime = Random.Range(1.5f, 3f);
-        yield return StartCoroutine(Pause(pauseTime));
-        walkTime = Random.Range(2f, 4f);
-        yield return StartCoroutine(Walk(walkTime));
+        yield return StartCoroutine(IdleBehavior());
+    }
+
+    private IEnumerator IdleBehavior()
+    {
+        while (true)
+        {
+            bool delayTurn = Random.Range(0, 2) == 0;
+            if (delayTurn) {
+                yield return StartCoroutine(Turn());
+            }
+            else
+            {
+                StartCoroutine(Turn());
+            }
+
+            float walkTime = Random.Range(2f, 4f);
+            yield return StartCoroutine(Walk(walkTime));
+
+            float pauseTime = Random.Range(1.5f, 3f);
+            yield return StartCoroutine(Pause(pauseTime));
+            
+        }
+        
     }
 
     private IEnumerator Walk(float walkTime)
@@ -30,10 +48,31 @@ public class NpcMovement : MonoBehaviour
         while (timeElapsed < walkTime)
         {
             timeElapsed += Time.deltaTime;
-            rb.AddForce(transform.forward * 8, ForceMode.Force);
+            rb.AddForce(transform.forward * walkSpeed, ForceMode.Force);
             yield return new WaitForFixedUpdate();
+        }  
+    }
+
+    private IEnumerator Turn()
+    {
+        float maxTurnAngle = 90f;
+
+        float randomTurnAngle = Random.Range(-maxTurnAngle, maxTurnAngle);
+
+        float turnDuration = 1f; 
+        float timeElapsed = 0f;
+
+        Quaternion startRotation = transform.rotation;
+        Quaternion targetRotation = Quaternion.Euler(0, transform.eulerAngles.y + randomTurnAngle, 0);
+
+        while (timeElapsed < turnDuration)
+        {
+            timeElapsed += Time.deltaTime;
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, timeElapsed / turnDuration);
+            yield return null;
         }
-        
+
+        transform.rotation = targetRotation;
     }
 
     private IEnumerator Pause(float waitTime)
