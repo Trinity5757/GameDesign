@@ -86,4 +86,13 @@ public class NpcMovement : MonoBehaviour
         Debug.Log("Started Pausing");
         yield return new WaitForSecondsRealtime(waitTime);
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        PlayerMovement player = other.GetComponent<PlayerMovement>();
+        if (player != null) {
+            StopAllCoroutines();
+            StartIdleBehavior();
+        }
+    }
 }

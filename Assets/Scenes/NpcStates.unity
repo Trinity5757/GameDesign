@@ -587,7 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 892746eac3a293d408398f7094bae9e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InteractRange: 10
+  InteractRange: 4
 --- !u!1 &519098222
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +918,7 @@ GameObject:
   - component: {fileID: 592462731}
   - component: {fileID: 592462732}
   - component: {fileID: 592462733}
+  - component: {fileID: 592462734}
   m_Layer: 0
   m_Name: npc
   m_TagString: Interactable
@@ -1111,6 +1112,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!135 &592462734
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592462724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &604954002
 PrefabInstance:
   m_ObjectHideFlags: 0
