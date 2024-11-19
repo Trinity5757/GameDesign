@@ -971,6 +971,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 592462731}
+        m_TargetAssemblyTypeName: NpcMovement, Assembly-CSharp
+        m_MethodName: PauseIdleBehavior
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!23 &592462728
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1048,6 +1060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1db680165e5ff7048bc7ce3237ddab5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkSpeed: 7
 --- !u!136 &592462732
 CapsuleCollider:
   m_ObjectHideFlags: 0

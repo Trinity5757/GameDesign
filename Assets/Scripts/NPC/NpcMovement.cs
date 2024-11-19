@@ -7,14 +7,20 @@ public class NpcMovement : MonoBehaviour
     public float walkSpeed = 7f;
     private Rigidbody rb;
 
-    private IEnumerator Start()
+    private void Start()
     {
-        // TODO: Call the StateManager
-        // TODO: Start either in a walking or paused state. Choose this randomly
-        // TODO: Implement walking in a line
-        // TODO: Implement pause
         rb = GetComponent<Rigidbody>();
-        yield return StartCoroutine(IdleBehavior());
+        StartIdleBehavior();
+    }
+
+    public void StartIdleBehavior()
+    {
+        StartCoroutine(IdleBehavior());
+    }
+
+    public void PauseIdleBehavior()
+    {
+        StopAllCoroutines();
     }
 
     private IEnumerator IdleBehavior()
