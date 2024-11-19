@@ -6,15 +6,26 @@ public class WireConnection : MonoBehaviour
 {
     bool mouseDown = false;
     public WireStats powerWireStates;
+    LineRenderer lineRenderer;
 
     void Start()
     {
         powerWireStates = gameObject.GetComponent<WireStats>();
+        lineRenderer = gameObject.GetComponentInParent<LineRenderer>();
+        if (lineRenderer != null)
+        {
+            lineRenderer.positionCount = 4;
+        }
     }
 
     void Update()
     {
         MoveWire();
+        if (lineRenderer != null)
+        {
+            lineRenderer.SetPosition(3, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
+            lineRenderer.SetPosition(2, new Vector3(gameObject.transform.localPosition.x - .1f, gameObject.transform.localPosition.y - .1f, gameObject.transform.localPosition.z));
+        }
     }
 
     void OnMouseDown()
@@ -46,9 +57,10 @@ public class WireConnection : MonoBehaviour
         if (mouseDown && powerWireStates.movable)
         {
             powerWireStates.moving = true;
-            float mouseX = Input.mousePosition.x;
-            float mouseY = Input.mousePosition.y;
-            gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(mouseX, mouseY, Camera.main.nearClipPlane));
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
+            gameObject.transform.position = Camera.main.ScreenToWorldPoint(mousePosition);
+            // gameObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, transform.parent.transform.position.z);
         }
         else
         {
@@ -58,6 +70,7 @@ public class WireConnection : MonoBehaviour
     }
 
 }
+
 // Do not want to delete old code due to notes. 
 // //A knock off Method is a prefab
 // public GameObject linePrefab;
