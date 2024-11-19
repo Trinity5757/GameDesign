@@ -380,6 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18d5efbcb0dfa884a959e20e577b2018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialData:
+    plastic: 0
+    metal: 0
+    glass: 0
+    organic: 0
 --- !u!1 &568107694
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +625,7 @@ Transform:
   m_GameObject: {fileID: 1434694501}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: -291, y: 399, z: 377}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1000,7 +1005,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 60159daa1505fee40af176b354465793, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
