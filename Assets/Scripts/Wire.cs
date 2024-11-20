@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Wire : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Wire : MonoBehaviour
     
     private void Awake()
     {
-        _image = getComponent<Image>();
+        _image = GetComponent<Image>();
     }
 
     public void SetColor(Color color)
