@@ -39,6 +39,7 @@ public class WireTask : MonoBehaviour
 
             _availableColors.Remove(pickedColors);
             _availableleftwiresIndex.RemoveAt(pickedLeftIndex);
+            _availablerightwiresIndex.RemoveAt(pickedRightIndex);
         }
     }
 }
