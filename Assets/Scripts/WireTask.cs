@@ -61,6 +61,7 @@ public class WireTask : MonoBehaviour
                 {
                     successfulWires++;
                 }
+            }
                 if(successfulWires >= _rightwires.Count)
                 {
                     Debug.Log("Task Completed");
@@ -72,5 +73,4 @@ public class WireTask : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
-    }
 }
