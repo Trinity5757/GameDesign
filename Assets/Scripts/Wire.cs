@@ -58,6 +58,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void SetColor(Color color)
     {
+        color.a = 1;
         _image.color = color;
         _lineRenderer.startColor = color;
         _lineRenderer.endColor = color;
