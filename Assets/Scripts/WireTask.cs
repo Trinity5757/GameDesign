@@ -8,6 +8,11 @@ public class WireTask : MonoBehaviour
     public List<Wire> _leftwires = new List<Wire>();
     public List<Wire> _rightwires = new List<Wire>();
 
+    public Wire CurrentDraggedWire;
+    public Wire CurrentHoveredWire;
+
+    public bool IsTaskCompleted = false;
+
     private List<Color> _availableColors;
     private List<int> _availableleftwiresIndex;
     private List<int> _availablerightwiresIndex;
@@ -42,6 +47,30 @@ public class WireTask : MonoBehaviour
             _availableColors.Remove(pickedColor);
             _availableleftwiresIndex.RemoveAt(pickedLeftIndex);
             _availablerightwiresIndex.RemoveAt(pickedRightIndex);
+        }
+        StartCoroutine(CheckTaskCompletion());
+    }
+    private IEnumerator CheckTaskCompletion()
+    {
+        while(!IsTaskCompleted)
+        {
+            int successfulWires = 0;
+            for(int i = 0; i < _rightwires.Count; i++)
+            {
+                if(_rightwires[i].IsSuccess)
+                {
+                    successfulWires++;
+                }
+                if(successfulWires >= _rightwires.Count)
+                {
+                    Debug.Log("Task Completed");
+                }
+                else
+                {
+                    Debug.Log("Task Failed");
+                }
+                yield return new WaitForSeconds(0.5f);
+            }
         }
     }
 }
