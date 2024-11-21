@@ -69,7 +69,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (IsLeftWire)
+        if (!IsLeftWire)
         {
             return;
         }
@@ -77,6 +77,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         {
             return;
         }
+        Debug.Log("Dragging " + this.gameObject.name);
         _isDragStarted = true;
         _wireTask.CurrentDraggedWire = this;
     }
@@ -91,6 +92,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 Debug.Log("Wire successfully connected!");
             }
         }
+        Debug.Log("Drag Cancelled");
         _isDragStarted = false;
         _wireTask.CurrentDraggedWire = null;
     }

@@ -68,7 +68,7 @@ public class WireTask : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Task Failed");
+                    //Debug.Log("Task Failed");
                 }
                 yield return new WaitForSeconds(0.5f);
             }
