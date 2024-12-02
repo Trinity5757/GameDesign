@@ -9,12 +9,12 @@ public class BlowingBubble : MonoBehaviour
     //Adding the dynamic difficult  variables
     public float difficultyLevel = 1;
     public float difficultyIncrease = 0.1f;
-    public float interatactionTime = 5.0f;
+    public float interactionTime = 5.0f;
     public float playerScore = 0;
     public float timer;
 
     //Declaring Variables for the bubbles growth rate.
-    public float growthRate = 0.5f + (difficultyLevel * difficultyIncrease);
+    public float growthRate = 0.5f;
     public float maxSize = 2.0f;
     private Vector3 originalScale;
 
@@ -23,7 +23,7 @@ public class BlowingBubble : MonoBehaviour
     void Start()
     {
         originalScale = transform.localScale;
-        timer = interatactionTime;
+        timer = interactionTime;
     }
 
     // Update is called once per frame
@@ -74,5 +74,6 @@ public class BlowingBubble : MonoBehaviour
         {
             difficultyLevel = 4;
         }
+        growthRate += (difficultyLevel * difficultyIncrease);
     }
 }
