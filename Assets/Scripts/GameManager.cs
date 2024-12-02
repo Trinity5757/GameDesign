@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
         public int locale;
         public int controlScheme;
         public int colorBlind;
+        
+        
 
         private void Awake()
         {
