@@ -12,6 +12,7 @@ public class MinigameHandler : MonoBehaviour
     {
         // Lock movement of camera and controls
         Debug.Log("Starting first minigame :>");
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(firstMinigameSceneName, LoadSceneMode.Additive);
     }
 
