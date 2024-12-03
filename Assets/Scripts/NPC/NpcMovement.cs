@@ -5,7 +5,7 @@ using UnityEngine;
 public class NpcMovement : MonoBehaviour
 {
     public float walkSpeed = 7f;
-    private Rigidbody rb;
+    protected Rigidbody rb;
 
     private void Start()
     {
@@ -13,12 +13,12 @@ public class NpcMovement : MonoBehaviour
         StartIdleBehavior();
     }
 
-    public void StartIdleBehavior()
+    public virtual void StartIdleBehavior()
     {
         StartCoroutine(IdleBehavior());
     }
 
-    public void PauseIdleBehavior()
+    public void StopCurrentBehavior()
     {
         StopAllCoroutines();
     }
