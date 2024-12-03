@@ -50,7 +50,7 @@ public class NpcMovement : MonoBehaviour
     {
         // Walk only while not directly in front of anything. Check this only every 0.2f seconds through the walkTime.
         float timeElapsed = 0f;
-        Debug.Log("Started walking");
+        //Debug.Log("Started walking");
         while (timeElapsed < walkTime)
         {
             timeElapsed += Time.deltaTime;
@@ -83,7 +83,7 @@ public class NpcMovement : MonoBehaviour
 
     private IEnumerator Pause(float waitTime)
     {
-        Debug.Log("Started Pausing");
+        //Debug.Log("Started Pausing");
         yield return new WaitForSecondsRealtime(waitTime);
     }
 
