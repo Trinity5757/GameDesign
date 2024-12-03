@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4553441167786752883}
   - component: {fileID: 1055042042392302712}
   - component: {fileID: 8680427575536739517}
-  - component: {fileID: 3913242941433148829}
+  - component: {fileID: 6441940445495322560}
   - component: {fileID: 1390914137694298449}
   - component: {fileID: 3555132043823126504}
   - component: {fileID: 8517782550409155943}
@@ -117,7 +117,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3913242941433148829}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: NpcMovement, Assembly-CSharp
         m_MethodName: PauseIdleBehavior
         m_Mode: 1
@@ -147,7 +147,7 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
---- !u!114 &3913242941433148829
+--- !u!114 &6441940445495322560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -156,10 +156,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7188926980512666837}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1db680165e5ff7048bc7ce3237ddab5d, type: 3}
+  m_Script: {fileID: 11500000, guid: d36791ff4e35dde4296460503c69ab4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 7
+  walkSpeed: 9
 --- !u!136 &1390914137694298449
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -192,7 +192,7 @@ Rigidbody:
   m_GameObject: {fileID: 7188926980512666837}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 0.7
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}

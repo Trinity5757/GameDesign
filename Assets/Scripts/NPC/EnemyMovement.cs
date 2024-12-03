@@ -5,27 +5,25 @@ using UnityEngine;
 public class EnemyMovement : NpcMovement
 {
 
-    public override void StartIdleBehavior()
-    {
-        base.StartIdleBehavior();
-    }
-
     private IEnumerator ChasePlayer(Transform player)
     {
 
         while (true)
         {
-            //rb.AddForce()
+            Vector3 direction = player.position - transform.position;
+            rb.AddForce(direction.normalized * walkSpeed, ForceMode.Force);
+            yield return new WaitForFixedUpdate();
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // enter chase mode
+        PlayerMovement player = other.GetComponent<PlayerMovement>();
+        if (player != null)
+        {
+            StopAllCoroutines();
+            StartCoroutine(ChasePlayer(player.transform));
+        }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        // Exit chase mode
-    }
 }
