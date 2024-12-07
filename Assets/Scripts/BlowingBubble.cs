@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//Blowing Bubble Minigame.
+//Blowing Bubble Minigame. This is to simulate the creation of the socket. 
 public class BlowingBubble : MonoBehaviour
 {
 
@@ -16,8 +16,7 @@ public class BlowingBubble : MonoBehaviour
     //Declaring Variables for the bubbles growth rate.
     public float growthRate = 0.5f;
     public float maxSize = 2.0f;
-    private Vector3 originalScale;
-
+    private Vector3 originalScale;   
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +32,7 @@ public class BlowingBubble : MonoBehaviour
         timer -= Time.deltaTime;
         //Adjusts the growth rate dynamically
 
-        float growthRate = 0.5f + (difficultyLevel * difficultyIncrease);
+        growthRate = 0.5f + (difficultyLevel * difficultyIncrease);
 
         if(transform.localScale.x < maxSize && timer > 0)
         {
@@ -43,10 +42,18 @@ public class BlowingBubble : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if(timer < 0)
+        {
+
+            Destroy(gameObject);
+            // popupPanel.ShowPopup();
+        }
     }
 
+    //What occurs when the mouse is clicked. 
     void OnMouseDown()
     {
+        //Adjusts the player score. 
         if(transform.localScale.x < maxSize )
         {
             playerScore++;
@@ -60,20 +67,9 @@ public class BlowingBubble : MonoBehaviour
         AdjustDifficulty();
     }
 
+    //The function to adjust the difficulty level. 
     void AdjustDifficulty()
     {
-        if(playerScore >=10)
-        {
-            difficultyLevel = 2;
-        }
-        else if (playerScore >= 20)
-        {
-            difficultyLevel = 3;
-        }
-        else if (playerScore >= 30)
-        {
-            difficultyLevel = 4;
-        }
-        growthRate += (difficultyLevel * difficultyIncrease);
+       difficultyLevel = Mathf.Floor(playerScore / 10) + 1;
     }
 }
