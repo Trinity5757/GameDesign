@@ -24,7 +24,55 @@ public class BlowingBubble : MonoBehaviour
     public GameObject lossPopup;
 
 
-    
+    //Start is called before the first frame update
+    void Start()
+    {
+        //Establishes that the original timer is equal to the timer variable
+        originalTimer = timer;
+        setupNewRound();
+    }
+
+    void Update()
+    {
+        //A continual loop to check to see if the user has one the game. 
+        if(!gameWon)
+        {
+            //Updates the Timer
+            timer -= Time.deltaTime;
+
+            //Checks to see if the timer is 0
+            if(timer <=0)
+            {
+                ShowLossPopup();
+            }
+        }
+    }
+
+    //Established the loss popup
+    void ShowLossPopup()
+    {
+
+    }
+
+
+    //Established the Win Popup
+    void ShowWinPopup()
+    {
+        
+    }
+
+    //Sets up the first round of the minigame
+    void setupNewRound()
+    {
+
+    }
+
+    //Sets up a new round of the minigame
+    void restartGame()
+    {
+
+    }
+
 
 
 }
