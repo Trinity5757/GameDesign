@@ -35,13 +35,13 @@ public class BlowingBubble : MonoBehaviour
     void Update()
     {
         //A continual loop to check to see if the user has one the game. 
-        if(!gameWon)
+        if (!gameWon)
         {
             //Updates the Timer
             timer -= Time.deltaTime;
 
             //Checks to see if the timer is 0
-            if(timer <=0)
+            if (timer <= 0)
             {
                 ShowLossPopup();
             }
@@ -51,26 +51,42 @@ public class BlowingBubble : MonoBehaviour
     //Established the loss popup
     void ShowLossPopup()
     {
-
+        lossPopup.setActive(true);
     }
 
 
     //Established the Win Popup
     void ShowWinPopup()
     {
-        
+        winPopup.setActive(true);
     }
 
     //Sets up the first round of the minigame
     void setupNewRound()
     {
+        //Will reset the bubble size
+        transform.localScale = Vector3.one * 0.1f;
 
+        //Randomize the cast size
+        castSize = Random.Range(1.5f, 3.0f);
+        cast.localScale = Vector3.one * castSize;
+
+        //Determine the target Bubble position
+        targetSize = castSize * (2.0f / 3.0f);
+
+        //Resets the Timer 
+        timer = originalTimer;
+        gameWon = false;
+
+        //Hides the Popups
+        winPopup.setActive(false);
+        lossPopup.setActive(false);
     }
 
     //Sets up a new round of the minigame
     void restartGame()
     {
-
+        setupNewRound();
     }
 
 
