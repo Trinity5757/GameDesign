@@ -23,6 +23,11 @@ public class BlowingBubble : MonoBehaviour
     public GameObject winPopup;
     public GameObject lossPopup;
 
+    //Declaring variables for the Cast;
+    private float castSize;
+    private float targetSize;
+    public Transform cast; 
+
 
     //Start is called before the first frame update
     void Start()
@@ -52,6 +57,8 @@ public class BlowingBubble : MonoBehaviour
     void ShowLossPopup()
     {
         lossPopup.setActive(true);
+        //Increases the amount of time available
+        timer += difficultyIncrease;
     }
 
 
@@ -59,6 +66,8 @@ public class BlowingBubble : MonoBehaviour
     void ShowWinPopup()
     {
         winPopup.setActive(true);
+        //Decreases the amount of time available
+        timer -= difficultyIncrease;
     }
 
     //Sets up the first round of the minigame
@@ -89,6 +98,23 @@ public class BlowingBubble : MonoBehaviour
         setupNewRound();
     }
 
+    public void OnButtonPress()
+    {
+        //Checks to see if the game has been one
+        if (gameWon)
+        {
+            return;
+        }
 
+        //Increases the Bubble size
+        transform.localScale += Vector3.one * growthRate;
+
+        //Checks to see if the User has won.
+        if(transform.localScale.x >= targetSize)
+        {
+            gameWon = true;
+            ShowWinPopup();
+        }
+    }
 
 }
