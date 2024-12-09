@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Used to summon the Game Over and Winning Pop Up 
 public class PopUp : MonoBehaviour
 {
 
     public GameObject popupPanel;
+
     // Start is called before the first frame update
     void Start()
     {
