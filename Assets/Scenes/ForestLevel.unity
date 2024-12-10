@@ -498,10 +498,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 7188926980512666837, guid: f624eaf5a4329cc4291542447be86c27, type: 3}
-  - {fileID: 7188926980512666837, guid: b491c70902c8aba43a5216a13624b632, type: 3}
-  - {fileID: 7188926980512666837, guid: f2e3a974472327543a386260c8926d3f, type: 3}
   - {fileID: 7188926980512666837, guid: 9429e2a09a370d74f9ca6b2292c0aceb, type: 3}
+  - {fileID: 7188926980512666837, guid: f624eaf5a4329cc4291542447be86c27, type: 3}
+  maxEnemies: 3
 --- !u!4 &176701143
 Transform:
   m_ObjectHideFlags: 0
@@ -868,10 +867,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPrefab:
-  - {fileID: 7188926980512666837, guid: f624eaf5a4329cc4291542447be86c27, type: 3}
   - {fileID: 7188926980512666837, guid: b491c70902c8aba43a5216a13624b632, type: 3}
   - {fileID: 7188926980512666837, guid: f2e3a974472327543a386260c8926d3f, type: 3}
-  - {fileID: 7188926980512666837, guid: 9429e2a09a370d74f9ca6b2292c0aceb, type: 3}
+  maxEnemies: 3
 --- !u!4 &533032244
 Transform:
   m_ObjectHideFlags: 0
