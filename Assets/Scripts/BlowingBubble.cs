@@ -13,6 +13,7 @@ public class BlowingBubble : MonoBehaviour
 
     //Declaring the bubble object
     public GameObject bubbleObject;
+    public float originalBubbleSize = 1.0f;
     public float maxBubbleSize = 3.0f;
 
     //Declaring the timer variables to account for dynamic difficulty
@@ -25,6 +26,7 @@ public class BlowingBubble : MonoBehaviour
 
     //Boolean to check to see if the Game has been won
     private bool gameWon = false;
+    private bool gameActive = false; // activated once player clicks for the first time
 
     //Declaring the variables for the popup Window
     public GameObject winPopup;
@@ -40,6 +42,7 @@ public class BlowingBubble : MonoBehaviour
     public Button nextButton;
 
     //Declaring the Text Variables
+    public float bubbleProgress;
     public TextMeshProUGUI bubbleProgressText;
     public TextMeshProUGUI timerText;
 
@@ -48,7 +51,10 @@ public class BlowingBubble : MonoBehaviour
     {
         //Establishes that the original timer is equal to the timer variable
         originalTimer = timer;
+        
+        bubbleObject.transform.localScale = Vector3.one * originalBubbleSize;
         setupNewRound();
+        SetBubbleProgressText();
     }
 
     void Update()
@@ -56,8 +62,22 @@ public class BlowingBubble : MonoBehaviour
         //A continual loop to check to see if the user has one the game. 
         if (!gameWon)
         {
+            //Checks to see if the User clicked the Button
+            if (Input.GetMouseButtonDown(0))
+            {
+                RightClick();
+                //Updates the Bubble Percentage Text
+                SetBubbleProgressText();
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (gameActive && !gameWon)
+        {
             //Updates the Timer
-            timer -= Time.deltaTime;
+            timer -= Time.fixedDeltaTime;
 
             //Checks to see if the timer is 0
             if (timer <= 0)
@@ -66,18 +86,7 @@ public class BlowingBubble : MonoBehaviour
             }
 
             //Updates the timer text
-            timerText.text = "Time: " +  Mathf.Max(0, timer).ToString("F1");
-
-
-            //Checks to see if the User clicked the Button
-            if (Input.GetMouseButton(0))
-            {
-                RightClick();
-            }
-
-            //Updates the Bubble Percentage Text
-            float bubbleProgress = (bubbleObject.transform.localScale.x / targetSize) * 100f;
-            bubbleProgressText.text = "Bubble Progress: " + Mathf.Min(bubbleProgress, 100f).ToString("F1") + "%";
+            timerText.text = "Time: " + Mathf.Max(0, timer).ToString("F1");
         }
     }
 
@@ -120,6 +129,8 @@ public class BlowingBubble : MonoBehaviour
     //Sets up the first round of the minigame
     void setupNewRound()
     {
+        bubbleProgress = 0f;
+
         //Will reset the bubble size
         bubbleObject.transform.localScale = Vector3.one * 0.1f;
 
@@ -128,7 +139,8 @@ public class BlowingBubble : MonoBehaviour
         PlayerPrefs.SetFloat("castSize", castSize);
 
         //Determine the target Bubble position
-        targetSize = Mathf.Min(castSize * (2.0f / 3.0f), maxBubbleSize);
+        //targetSize = Mathf.Min(castSize * (2.0f / 3.0f), maxBubbleSize);
+        targetSize = maxBubbleSize;
 
         //Resets the Timer 
         timer = originalTimer;
@@ -149,6 +161,7 @@ public class BlowingBubble : MonoBehaviour
     public void RightClick()
     {
         Debug.Log("OnButtonPress");
+        gameActive = true;
         //Checks to see if the game has been one
         if (gameWon)
         {
@@ -167,8 +180,18 @@ public class BlowingBubble : MonoBehaviour
         if (bubbleObject.transform.localScale.x >= targetSize)
         {
             gameWon = true;
+            gameActive = false;
             ShowWinPopup();
         }
+    }
+
+    public void SetBubbleProgressText()
+    {
+        bubbleProgress = 
+            ((bubbleObject.transform.localScale.x) - (originalBubbleSize))
+            /
+            (targetSize - originalBubbleSize) * 100f;
+        bubbleProgressText.text = "Bubble Progress: " + Mathf.Min(bubbleProgress, 100f).ToString("F1") + "%";
     }
 
     //Centering the Runaway Bubble
