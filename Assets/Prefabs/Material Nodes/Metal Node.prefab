@@ -180,3 +180,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceType: 0
   resourceAmount: 10
+  bobAmount: 0.2
+  bobSpeed: 1.5
