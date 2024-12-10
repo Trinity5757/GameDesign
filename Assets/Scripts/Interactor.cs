@@ -29,6 +29,9 @@ public class Interactor : MonoBehaviour
 
     private void Update()
     {
+        if(Time.timeScale == 0f)
+            return;
+        
         CheckInteraction();
         /* old input 
         if (Input.GetKeyDown(KeyCode.E) && currentInteractable!= null) //TODO: Change this hardcoded input 
