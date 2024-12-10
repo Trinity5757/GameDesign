@@ -58,7 +58,6 @@ public class BlowingBubble : MonoBehaviour
         {
             //Updates the Timer
             timer -= Time.deltaTime;
-
             //Checks to see if the timer is 0
             if (timer <= 0)
             {
@@ -84,6 +83,7 @@ public class BlowingBubble : MonoBehaviour
     //Established the loss popup
     void ShowLossPopup()
     {
+        restartButton.onClick.RemoveAllListeners();
         Debug.Log("Loss Popup Triggered");
         lossPopup.SetActive(true);
         //Increases the amount of time available
@@ -97,6 +97,7 @@ public class BlowingBubble : MonoBehaviour
     //Established the Win Popup
     void ShowWinPopup()
     {
+        restartButton.onClick.RemoveAllListeners();
         winPopup.SetActive(true);
         //Decreases the amount of time available
         gameWon = true;
@@ -121,7 +122,7 @@ public class BlowingBubble : MonoBehaviour
     void setupNewRound()
     {
         //Will reset the bubble size
-        bubbleObject.transform.localScale = Vector3.one * 0.1f;
+        bubbleObject.transform.localScale = Vector3.zero;
 
         //Randomize the cast size
         castSize = Random.Range(1.5f, 3.0f);
