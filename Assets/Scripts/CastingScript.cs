@@ -110,7 +110,7 @@ public class CastingScript : MonoBehaviour
 
     void LoadPreviousScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("ForestLevel");
     }
 
     void LoadNextScene()

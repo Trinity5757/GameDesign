@@ -108,7 +108,7 @@ public class BlowingBubble : MonoBehaviour
     //For the quit Button 
     void LoadPreviousScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("ForestLevel");
     }
 
     //For the next Button 
