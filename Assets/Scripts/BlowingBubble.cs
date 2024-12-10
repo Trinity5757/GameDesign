@@ -74,7 +74,7 @@ public class BlowingBubble : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!gameWon)
+        if (gameActive && !gameWon)
         {
             //Updates the Timer
             timer -= Time.fixedDeltaTime;
@@ -161,6 +161,7 @@ public class BlowingBubble : MonoBehaviour
     public void RightClick()
     {
         Debug.Log("OnButtonPress");
+        gameActive = true;
         //Checks to see if the game has been one
         if (gameWon)
         {
@@ -179,6 +180,7 @@ public class BlowingBubble : MonoBehaviour
         if (bubbleObject.transform.localScale.x >= targetSize)
         {
             gameWon = true;
+            gameActive = false;
             ShowWinPopup();
         }
     }
