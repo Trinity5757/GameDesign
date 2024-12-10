@@ -1,79 +1,180 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
-//Blowing Bubble Minigame.
+//Blowing Bubble Minigame. This is to simulate the creation of the socket. 
 public class BlowingBubble : MonoBehaviour
 {
+    //The Variables for the Minigame 
+    //They will be used for implementing Dynamic Difficulty
 
-    //Adding the dynamic difficult  variables
-    public float difficultyLevel = 1;
-    public float difficultyIncrease = 0.1f;
-    public float interactionTime = 5.0f;
-    public float playerScore = 0;
-    public float timer;
+    //Declaring the bubble object
+    public GameObject bubbleObject;
+    public float maxBubbleSize = 3.0f;
 
-    //Declaring Variables for the bubbles growth rate.
-    public float growthRate = 0.5f;
-    public float maxSize = 2.0f;
-    private Vector3 originalScale;
+    //Declaring the timer variables to account for dynamic difficulty
+    public float timer = 10.0f;
+    private float originalTimer;
+    public float difficultyIncrease = 0.5f;
 
+    //To establish the growth rate of the bubble per button press
+    public float growthRate = 0.01f;
 
-    // Start is called before the first frame update
+    //Boolean to check to see if the Game has been won
+    private bool gameWon = false;
+
+    //Declaring the variables for the popup Window
+    public GameObject winPopup;
+    public GameObject lossPopup;
+
+    //Declaring variables for the Cast;
+    private float castSize;
+    private float targetSize;
+
+    //Declaring the Buttons
+    public Button restartButton;
+    public Button quitButton;
+    public Button nextButton;
+
+    //Declaring the Text Variables
+    public TextMeshProUGUI bubbleProgressText;
+    public TextMeshProUGUI timerText;
+
+    //Start is called before the first frame update
     void Start()
     {
-        originalScale = transform.localScale;
-        timer = interactionTime;
+        //Establishes that the original timer is equal to the timer variable
+        originalTimer = timer;
+        setupNewRound();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Adjusts the timer;
-        timer -= Time.deltaTime;
-        //Adjusts the growth rate dynamically
-
-        float growthRate = 0.5f + (difficultyLevel * difficultyIncrease);
-
-        if(transform.localScale.x < maxSize && timer > 0)
+        //A continual loop to check to see if the user has one the game. 
+        if (!gameWon)
         {
-            transform.localScale += Vector3.one * growthRate * Time.deltaTime;
-        }
-        else
-        {
-            Destroy(gameObject);
+            //Updates the Timer
+            timer -= Time.deltaTime;
+
+            //Checks to see if the timer is 0
+            if (timer <= 0)
+            {
+                ShowLossPopup();
+            }
+
+            //Updates the timer text
+            timerText.text = "Time: " +  Mathf.Max(0, timer).ToString("F1");
+
+
+            //Checks to see if the User clicked the Button
+            if (Input.GetMouseButton(0))
+            {
+                RightClick();
+            }
+
+            //Updates the Bubble Percentage Text
+            float bubbleProgress = (bubbleObject.transform.localScale.x / targetSize) * 100f;
+            bubbleProgressText.text = "Bubble Progress: " + Mathf.Min(bubbleProgress, 100f).ToString("F1") + "%";
         }
     }
 
-    void OnMouseDown()
+    //Established the loss popup
+    void ShowLossPopup()
     {
-        if(transform.localScale.x < maxSize )
-        {
-            playerScore++;
-        }
-        else
-        {
-            playerScore--;
-        }
-
-        Destroy(gameObject);
-        AdjustDifficulty();
+        Debug.Log("Loss Popup Triggered");
+        lossPopup.SetActive(true);
+        //Increases the amount of time available
+        gameWon = true;
+        //Declaring the onClick Handlers
+        restartButton.onClick.AddListener(setupNewRound);
+        quitButton.onClick.AddListener(LoadPreviousScene);
+        timer += difficultyIncrease;
     }
 
-    void AdjustDifficulty()
+    //Established the Win Popup
+    void ShowWinPopup()
     {
-        if(playerScore >=10)
+        winPopup.SetActive(true);
+        //Decreases the amount of time available
+        gameWon = true;
+        timer -= difficultyIncrease;
+        //Declaring the onClick Handlers
+        nextButton.onClick.AddListener(LoadNextScene);
+    }
+
+    //For the quit Button 
+    void LoadPreviousScene()
+    {
+        SceneManager.LoadScene("ForestLevel");
+    }
+
+    //For the next Button 
+    void LoadNextScene()
+    {
+        SceneManager.LoadScene("CastingMiniGame");
+    }
+
+    //Sets up the first round of the minigame
+    void setupNewRound()
+    {
+        //Will reset the bubble size
+        bubbleObject.transform.localScale = Vector3.one * 0.1f;
+
+        //Randomize the cast size
+        castSize = Random.Range(1.5f, 3.0f);
+        PlayerPrefs.SetFloat("castSize", castSize);
+
+        //Determine the target Bubble position
+        targetSize = Mathf.Min(castSize * (2.0f / 3.0f), maxBubbleSize);
+
+        //Resets the Timer 
+        timer = originalTimer;
+        gameWon = false;
+
+        //Hides the Popups
+        winPopup.SetActive(false);
+        lossPopup.SetActive(false);
+        CenterBubble();
+    }
+
+    //Sets up a new round of the minigame
+    void restartGame()
+    {
+        setupNewRound();
+    }
+
+    public void RightClick()
+    {
+        Debug.Log("OnButtonPress");
+        //Checks to see if the game has been one
+        if (gameWon)
         {
-            difficultyLevel = 2;
+            return;
         }
-        else if (playerScore >= 20)
+
+        //Increases the Bubble size
+        bubbleObject.transform.localScale += Vector3.one * growthRate;
+
+        if (bubbleObject.transform.localScale.x > maxBubbleSize)
         {
-            difficultyLevel = 3;
+            bubbleObject.transform.localScale = Vector3.one * maxBubbleSize;
         }
-        else if (playerScore >= 30)
+        Debug.Log("Curent Bubble Size: " + bubbleObject.transform.localScale);
+        //Checks to see if the User has won.
+        if (bubbleObject.transform.localScale.x >= targetSize)
         {
-            difficultyLevel = 4;
+            gameWon = true;
+            ShowWinPopup();
         }
-        growthRate += (difficultyLevel * difficultyIncrease);
+    }
+
+    //Centering the Runaway Bubble
+    void CenterBubble()
+    {
+        bubbleObject.transform.localPosition = Vector3.zero;
+        bubbleObject.transform.localScale = Vector3.one;
     }
 }
