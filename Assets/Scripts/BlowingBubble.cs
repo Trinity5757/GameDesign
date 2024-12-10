@@ -26,6 +26,7 @@ public class BlowingBubble : MonoBehaviour
 
     //Boolean to check to see if the Game has been won
     private bool gameWon = false;
+    private bool gameActive = false; // activated once player clicks for the first time
 
     //Declaring the variables for the popup Window
     public GameObject winPopup;
@@ -61,8 +62,22 @@ public class BlowingBubble : MonoBehaviour
         //A continual loop to check to see if the user has one the game. 
         if (!gameWon)
         {
+            //Checks to see if the User clicked the Button
+            if (Input.GetMouseButtonDown(0))
+            {
+                RightClick();
+                //Updates the Bubble Percentage Text
+                SetBubbleProgressText();
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (!gameWon)
+        {
             //Updates the Timer
-            timer -= Time.deltaTime;
+            timer -= Time.fixedDeltaTime;
 
             //Checks to see if the timer is 0
             if (timer <= 0)
@@ -71,16 +86,7 @@ public class BlowingBubble : MonoBehaviour
             }
 
             //Updates the timer text
-            timerText.text = "Time: " +  Mathf.Max(0, timer).ToString("F1");
-
-
-            //Checks to see if the User clicked the Button
-            if (Input.GetMouseButtonDown(0))
-            {
-                RightClick();
-                //Updates the Bubble Percentage Text
-                SetBubbleProgressText();
-            }
+            timerText.text = "Time: " + Mathf.Max(0, timer).ToString("F1");
         }
     }
 
