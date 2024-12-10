@@ -8,6 +8,10 @@ public class Bow : MonoBehaviour
 
     void Update()
     {
+        //in case we are paused
+        if (Time.timeScale == 0f)
+            return;
+        
         if (Input.GetButtonDown("Fire1"))
         {
             ShootArrow();

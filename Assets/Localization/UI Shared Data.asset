@@ -81,6 +81,18 @@ MonoBehaviour:
     m_Key: Achromatomaly_Key
     m_Metadata:
       m_Items: []
+  - m_Id: 9904126064873472
+    m_Key: Pause_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9904647454609408
+    m_Key: Resume_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 9904811082797056
+    m_Key: Save_Key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
