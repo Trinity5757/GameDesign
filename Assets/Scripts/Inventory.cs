@@ -12,17 +12,15 @@ public class Inventory : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
         }
         else
         {
             Destroy(gameObject); // Prevent duplicates
+            return;
         }
-    }
-    
-    private void Start()
-    {
+        
         materialData = SaveData.Load();
+
     }
     
     public MaterialData GetMaterialData()
