@@ -114,7 +114,7 @@ public class BlowingBubble : MonoBehaviour
     //For the next Button 
     void LoadNextScene()
     {
-        SceneManager.LoadScene("ScrewingMiniGame");
+        SceneManager.LoadScene("CastingMiniGame");
     }
 
     //Sets up the first round of the minigame
@@ -125,6 +125,7 @@ public class BlowingBubble : MonoBehaviour
 
         //Randomize the cast size
         castSize = Random.Range(1.5f, 3.0f);
+        PlayerPrefs.SetFloat("castSize", castSize);
 
         //Determine the target Bubble position
         targetSize = Mathf.Min(castSize * (2.0f / 3.0f), maxBubbleSize);
