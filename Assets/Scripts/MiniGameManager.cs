@@ -11,6 +11,7 @@ public class MiniGameManager : MonoBehaviour
     public GameObject finishingUI;
 
     public SecondaryCamera secondaryCameraScript;
+    private AudioManager audioManager;
 
     private void Start()
     {
@@ -25,6 +26,7 @@ public class MiniGameManager : MonoBehaviour
             confirmationUI.SetActive(false); // Hide confirmation UI initially
             finishingUI.SetActive(false);
         }
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     public void InteractWithWorkbench()
@@ -38,6 +40,7 @@ public class MiniGameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         confirmationUI.SetActive(true);
+        audioManager.PlayClickSound();
     }
 
     public void ExitWorkbench()
@@ -51,6 +54,7 @@ public class MiniGameManager : MonoBehaviour
         Debug.Log("current mini game index: " + currentMiniGameIndex);
         confirmationUI.SetActive(false);
         finishingUI.SetActive(false);
+        audioManager.PlayClickSound();
         secondaryCameraScript.ReturnToMainCamera();
     }
 

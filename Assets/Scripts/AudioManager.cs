@@ -6,12 +6,12 @@ public class AudioManager : MonoBehaviour
 {
 
     // Declare the AudioSource variable
-    public AudioClip backgroundMusic;
-    public AudioClip collisionSound;
-    public AudioClip bowRelease;
-    public AudioClip click;
-    public AudioClip winNoise;
-    public AudioClip looseNoise;
+    public AudioSource backgroundMusic;
+    public AudioSource collisionSound;
+    public AudioSource bowRelease;
+    public AudioSource click;
+    public AudioSource winNoise;
+    public AudioSource looseNoise;
 
     // Start is called before the first frame update
     void Start()

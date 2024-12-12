@@ -7,14 +7,19 @@ public class Enemy : MonoBehaviour
     public float health = 50f;
 
     public GameObject drop;
+
+    //Adding an Audio Component
+    private AudioManager audioManager;
     public void TakeDamage(float damage)
     {
+        audioManager = FindObjectOfType<AudioManager>();
         health -= damage;
         if (health <= 0)
         {
             DropLoot();
             Despawn();
         }
+        audioManager.PlayCollisionSound();
     }
 
     void DropLoot()
