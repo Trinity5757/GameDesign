@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 7462538250765545342}
   - component: {fileID: 5763482384415887112}
   m_Layer: 0
-  m_Name: WorkBench
+  m_Name: WorkBench V2
   m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

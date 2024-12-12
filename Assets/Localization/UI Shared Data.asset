@@ -93,6 +93,56 @@ MonoBehaviour:
     m_Key: Save_Key
     m_Metadata:
       m_Items: []
+  - m_Id: 10944608219975680
+    m_Key: Start_Building_A_Prosthetic_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10944820757942272
+    m_Key: Cost_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10945979602194432
+    m_Key: Exit_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947366327177216
+    m_Key: Progress_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947445104594944
+    m_Key: Time_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950692947120128
+    m_Key: Try_Again?_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950785712541696
+    m_Key: Oops_Thermoplastic_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10951393416859648
+    m_Key: Game_Over_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953479097438208
+    m_Key: 'Next_Step_Key
+
+'
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953560081059840
+    m_Key: Thermoplastic_Ready_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953729589661696
+    m_Key: You_Win_Key
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10954863360364544
+    m_Key: Congrats_Made_Prosthetic_Key
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items: []
   m_KeyGenerator:
