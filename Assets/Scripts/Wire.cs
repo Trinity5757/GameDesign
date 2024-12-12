@@ -18,12 +18,16 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
     private WireTask _wireTask;
     public bool IsSuccess = false;
 
+    //Adding an Audio Component
+    private AudioManager audioManager;
+
     private void Awake()
     {
         _image = GetComponent<Image>();
         _lineRenderer = GetComponent<LineRenderer>();
         _canvas = GetComponentInParent<Canvas>();
         _wireTask = GetComponentInParent<WireTask>();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void Update()
@@ -90,6 +94,7 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
                 IsSuccess = true;
                 _wireTask.CurrentHoveredWire.IsSuccess = true;
                 Debug.Log("Wire successfully connected!");
+                audioManager.PlayClickSound();
             }
         }
         Debug.Log("Drag Cancelled");

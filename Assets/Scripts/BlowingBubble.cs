@@ -46,6 +46,9 @@ public class BlowingBubble : MonoBehaviour
     public TextMeshProUGUI bubbleProgressText;
     public TextMeshProUGUI timerText;
 
+    //Declaring the Audio Manager
+    private AudioManager audioManager;
+
     //Start is called before the first frame update
     void Start()
     {
@@ -53,6 +56,9 @@ public class BlowingBubble : MonoBehaviour
         originalTimer = timer;
         
         bubbleObject.transform.localScale = Vector3.one * originalBubbleSize;
+
+        audioManager = FindObjectOfType<AudioManager>();
+
         setupNewRound();
         SetBubbleProgressText();
     }
@@ -97,6 +103,7 @@ public class BlowingBubble : MonoBehaviour
         lossPopup.SetActive(true);
         //Increases the amount of time available
         gameWon = true;
+        audioManager.PlayLooseNoise();
         //Declaring the onClick Handlers
         restartButton.onClick.AddListener(setupNewRound);
         quitButton.onClick.AddListener(LoadPreviousScene);
@@ -110,6 +117,7 @@ public class BlowingBubble : MonoBehaviour
         //Decreases the amount of time available
         gameWon = true;
         timer -= difficultyIncrease;
+        audioManager.PlayWinNoise();
         //Declaring the onClick Handlers
         nextButton.onClick.AddListener(LoadNextScene);
     }
@@ -170,6 +178,8 @@ public class BlowingBubble : MonoBehaviour
 
         //Increases the Bubble size
         bubbleObject.transform.localScale += Vector3.one * growthRate;
+
+        audioManager.PlayClickSound();
 
         if (bubbleObject.transform.localScale.x > maxBubbleSize)
         {

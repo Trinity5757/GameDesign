@@ -6,7 +6,12 @@ public class AudioManager : MonoBehaviour
 {
 
     // Declare the AudioSource variable
-    public AudioSource backgroundMusic;
+    public AudioClip backgroundMusic;
+    public AudioClip collisionSound;
+    public AudioClip bowRelease;
+    public AudioClip click;
+    public AudioClip winNoise;
+    public AudioClip looseNoise;
 
     // Start is called before the first frame update
     void Start()
@@ -30,4 +35,37 @@ public class AudioManager : MonoBehaviour
             }
         }
     }
+
+    public void PlayCollisionSound()
+    {
+        if(bowRelease != null)
+        {
+            bowRelease.Play();
+        }
+    }
+
+    public void PlayClickSound()
+    {
+        if(click != null)
+        {
+            click.Play();
+        }
+    }
+
+    public void PlayWinNoise()
+    {
+        if(winNoise != null)
+        {
+            winNoise.Play();
+        }
+    }
+
+    public void PlayLooseNoise()
+    {
+        if(looseNoise != null)
+        {
+            looseNoise.Play();
+        }
+    }
+
 }

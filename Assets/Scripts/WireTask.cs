@@ -17,12 +17,16 @@ public class WireTask : MonoBehaviour
     private List<int> _availableleftwiresIndex;
     private List<int> _availablerightwiresIndex;
 
+    //Adding an Audio Component
+    private AudioManager audioManager;
+
     private MiniGame _miniGame;
 
     // Start is called before the first frame update
     void Start()
     {
         InitializeTask();
+        audioManager = FindObjectOfType<AudioManager>();
     }
 
     private void InitializeTask()
@@ -89,6 +93,7 @@ public class WireTask : MonoBehaviour
             {
                 Debug.Log("Task Completed");
                 IsTaskCompleted = true;
+                audioManager.PlayWinNoise();
                 
                 ResetTask(); // Reset the task after completion
                 
