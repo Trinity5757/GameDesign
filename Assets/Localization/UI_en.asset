@@ -94,6 +94,55 @@ MonoBehaviour:
     m_Localized: Save
     m_Metadata:
       m_Items: []
+  - m_Id: 10944608219975680
+    m_Localized: Start Building A Prosthetic
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10944820757942272
+    m_Localized: Cost
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10945979602194432
+    m_Localized: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947366327177216
+    m_Localized: Progress
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947445104594944
+    m_Localized: Time
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950692947120128
+    m_Localized: Try Again?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950785712541696
+    m_Localized: Whoops! The Thermoplastic Sheet Popped! Please Try Again!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10951393416859648
+    m_Localized: Game Over!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953479097438208
+    m_Localized: Nex Step
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953560081059840
+    m_Localized: The Thermoplastic Sheet is Now Ready to Be Transferred onto the
+      Mold!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953729589661696
+    m_Localized: You Win!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10954863360364544
+    m_Localized: Congrats! You made a prosthetic!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

@@ -94,6 +94,55 @@ MonoBehaviour:
     m_Localized: Guardar
     m_Metadata:
       m_Items: []
+  - m_Id: 10944608219975680
+    m_Localized: Comenzar a Construir una Protesis
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10944820757942272
+    m_Localized: Costo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10945979602194432
+    m_Localized: Salir
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947366327177216
+    m_Localized: Progreso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10947445104594944
+    m_Localized: Tiempo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950692947120128
+    m_Localized: Intentar de Nuevo?
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10950785712541696
+    m_Localized: Ups! La Lamina Termoplastica Se Revento! Por Favor, Intentalo de
+      Nuevo
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10951393416859648
+    m_Localized: Fin Del Juego
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953479097438208
+    m_Localized: Siguiente Paso
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953560081059840
+    m_Localized: La Lamina Termoplastica Ahora Esta Lista para Transferirse al Molde!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10953729589661696
+    m_Localized: Ganaste!
+    m_Metadata:
+      m_Items: []
+  - m_Id: 10954863360364544
+    m_Localized: Felicidades! Has fabricado una protesis!
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []
