@@ -68,4 +68,12 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void PlayBowRelease()
+    {
+        if(bowRelease != null)
+        {
+            bowRelease.Play();
+        }
+    }
+
 }
