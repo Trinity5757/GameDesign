@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class WireTask : MonoBehaviour
 {
@@ -19,16 +21,27 @@ public class WireTask : MonoBehaviour
 
     private MiniGame _miniGame;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        _miniGame = GetComponentInParent<MiniGame>();
+
+    }
+
     void Start()
     {
         InitializeTask();
     }
 
+    public void StartCoroutine()
+    {
+        StartCoroutine(CheckTaskCompletion());
+    }
+
     private void InitializeTask()
     {
         Debug.Log("Starting Initialize task...");
-        _miniGame = GetComponentInParent<MiniGame>();
+       // _miniGame = GetComponentInParent<MiniGame>();
 
         IsTaskCompleted = false;
 
@@ -72,16 +85,12 @@ public class WireTask : MonoBehaviour
         while (!IsTaskCompleted)
         {
             int successfulWires = 0;
-            
-            Debug.Log("Stuff is happening");
-            
             for (int i = 0; i < _rightwires.Count; i++)
             {
                 //Debug.Log("Stuff is happening");
                 if (_rightwires[i].IsSuccess)
                 {
                     successfulWires++;
-                    Debug.Log("succwires: " + successfulWires);
                 }
             }
             
@@ -109,9 +118,8 @@ public class WireTask : MonoBehaviour
 
     public void ResetTask()
     {
-           IsTaskCompleted = false;
            StopCoroutine(CheckTaskCompletion()); // Stop active coroutines
-           IsTaskCompleted = false;
+           Debug.Log("Stopping Coroutine");
         
             foreach (Wire wire in _leftwires)
             {
@@ -121,13 +129,12 @@ public class WireTask : MonoBehaviour
             {
                 wire.ResetWire(); // Reset each right wire
             }
-
+            Debug.Log("Reset Task and bool");
             IsTaskCompleted = false; // Reset task completion flag
         
 
         // Reinitialize the task
         InitializeTask();
-        Debug.Log("Calling initialize task...");
         Debug.Log("Starting coroutine...");
         StartCoroutine(CheckTaskCompletion());
     }
