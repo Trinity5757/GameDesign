@@ -13,8 +13,8 @@ public class BlowingBubble : MonoBehaviour
 
     //Declaring the bubble object
     public GameObject bubbleObject;
-    public float originalBubbleSize = 1.0f;
-    public float maxBubbleSize = 3.0f;
+    public float originalBubbleSize = 10f;
+    public float maxBubbleSize = 30f;
 
     //Declaring the timer variables to account for dynamic difficulty
     public float timer = 10.0f;
@@ -22,11 +22,11 @@ public class BlowingBubble : MonoBehaviour
     public float difficultyIncrease = 0.5f;
 
     //To establish the growth rate of the bubble per button press
-    public float growthRate = 0.01f;
+    public float growthRate = 1f;
 
     //Boolean to check to see if the Game has been won
-    private bool gameWon = false;
-    private bool gameActive = false; // activated once player clicks for the first time
+    public bool gameWon = false;
+    public bool gameActive = false; // activated once player clicks for the first time
 
     //Declaring the variables for the popup Window
     public GameObject winPopup;
@@ -46,6 +46,13 @@ public class BlowingBubble : MonoBehaviour
     public TextMeshProUGUI bubbleProgressText;
     public TextMeshProUGUI timerText;
 
+    private MiniGame _miniGame;
+
+    void Awake()
+    {
+        _miniGame = GetComponentInParent<MiniGame>();
+    }
+
     //Start is called before the first frame update
     void Start()
     {
@@ -59,6 +66,21 @@ public class BlowingBubble : MonoBehaviour
 
     void Update()
     {
+        if (gameActive && !gameWon)
+        {
+            // Updates the Timer using unscaled time
+            timer -= Time.unscaledDeltaTime;
+
+            // Checks to see if the timer is 0
+            if (timer <= 0)
+            {
+                ShowLossPopup();
+            }
+
+            // Updates the timer text
+            timerText.text = "Time: " + Mathf.Max(0, timer).ToString("F1");
+        }
+        
         //A continual loop to check to see if the user has one the game. 
         if (!gameWon)
         {
@@ -71,24 +93,7 @@ public class BlowingBubble : MonoBehaviour
             }
         }
     }
-
-    private void FixedUpdate()
-    {
-        if (gameActive && !gameWon)
-        {
-            //Updates the Timer
-            timer -= Time.fixedDeltaTime;
-
-            //Checks to see if the timer is 0
-            if (timer <= 0)
-            {
-                ShowLossPopup();
-            }
-
-            //Updates the timer text
-            timerText.text = "Time: " + Mathf.Max(0, timer).ToString("F1");
-        }
-    }
+    
 
     //Established the loss popup
     void ShowLossPopup()
@@ -99,7 +104,7 @@ public class BlowingBubble : MonoBehaviour
         gameWon = true;
         //Declaring the onClick Handlers
         restartButton.onClick.AddListener(setupNewRound);
-        quitButton.onClick.AddListener(LoadPreviousScene);
+        quitButton.onClick.AddListener(ExitAndReset);
         timer += difficultyIncrease;
     }
 
@@ -111,20 +116,21 @@ public class BlowingBubble : MonoBehaviour
         gameWon = true;
         timer -= difficultyIncrease;
         //Declaring the onClick Handlers
-        nextButton.onClick.AddListener(LoadNextScene);
+        nextButton.onClick.AddListener(ContinueAndReset);
     }
 
-    //For the quit Button 
-    void LoadPreviousScene()
+    void ContinueAndReset()
     {
-        SceneManager.LoadScene("ForestLevel");
+        setupNewRound();
+        _miniGame.CompleteMiniGame();
     }
 
-    //For the next Button 
-    void LoadNextScene()
+    void ExitAndReset()
     {
-        SceneManager.LoadScene("CastingMiniGame");
+        setupNewRound();
+        _miniGame.ExitMiniGame();
     }
+    
 
     //Sets up the first round of the minigame
     void setupNewRound()
@@ -132,7 +138,7 @@ public class BlowingBubble : MonoBehaviour
         bubbleProgress = 0f;
 
         //Will reset the bubble size
-        bubbleObject.transform.localScale = Vector3.one * 0.1f;
+        bubbleObject.transform.localScale = Vector3.one * originalBubbleSize;
 
         //Randomize the cast size
         castSize = Random.Range(1.5f, 3.0f);
@@ -145,6 +151,9 @@ public class BlowingBubble : MonoBehaviour
         //Resets the Timer 
         timer = originalTimer;
         gameWon = false;
+
+        //resets bubble progress
+        bubbleProgress = 0f;
 
         //Hides the Popups
         winPopup.SetActive(false);
@@ -160,7 +169,7 @@ public class BlowingBubble : MonoBehaviour
 
     public void RightClick()
     {
-        Debug.Log("OnButtonPress");
+        //Debug.Log("OnButtonPress");
         gameActive = true;
         //Checks to see if the game has been one
         if (gameWon)
@@ -187,10 +196,15 @@ public class BlowingBubble : MonoBehaviour
 
     public void SetBubbleProgressText()
     {
-        bubbleProgress = 
-            ((bubbleObject.transform.localScale.x) - (originalBubbleSize))
-            /
-            (targetSize - originalBubbleSize) * 100f;
+        // Get the current bubble size as a scalar (assuming uniform scaling)
+        float currentSize = bubbleObject.transform.localScale.x;
+
+        // Calculate progress as a percentage of growth from the original size to the target size
+        bubbleProgress = ((currentSize - originalBubbleSize) / (targetSize - originalBubbleSize)) * 100f;
+
+        // Clamp the value to a maximum of 100%
+        bubbleProgress = Mathf.Clamp(bubbleProgress, 0f, 100f);
+        
         bubbleProgressText.text = "Bubble Progress: " + Mathf.Min(bubbleProgress, 100f).ToString("F1") + "%";
     }
 
@@ -198,6 +212,5 @@ public class BlowingBubble : MonoBehaviour
     void CenterBubble()
     {
         bubbleObject.transform.localPosition = Vector3.zero;
-        bubbleObject.transform.localScale = Vector3.one;
     }
 }
