@@ -855,6 +855,7 @@ MonoBehaviour:
   - {fileID: 1064227940}
   confirmationUI: {fileID: 1692381820}
   finishingUI: {fileID: 1486788339}
+  secondaryCameraScript: {fileID: 838217609}
 --- !u!114 &286319844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1080,7 +1081,6 @@ GameObject:
   - component: {fileID: 370074737}
   - component: {fileID: 370074736}
   - component: {fileID: 370074739}
-  - component: {fileID: 370074740}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1131,7 +1131,6 @@ Transform:
   - {fileID: 1862324209}
   - {fileID: 1479235337}
   - {fileID: 648979368}
-  - {fileID: 789141309}
   - {fileID: 1793063467}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1199,24 +1198,6 @@ MonoBehaviour:
     metal: 0
     glass: 0
     organic: 0
---- !u!114 &370074740
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 370074733}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 40f8491cf373d7f4197155007d836fba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultCamera: {fileID: 1793063468}
-  secondaryCamera: {fileID: 789141310}
-  WireMiniGamePrefab: {fileID: 1064227940}
-  BubbleMiniGamePrefab: {fileID: 0}
-  PauseMenu: {fileID: 1972781072121249571, guid: 2b6dcf5e2321f2649b8f98418a6919a3, type: 3}
-  interactionHud: {fileID: 2063454617}
 --- !u!1 &440147704
 GameObject:
   m_ObjectHideFlags: 0
@@ -2484,12 +2465,12 @@ Transform:
   m_GameObject: {fileID: 789141308}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.858978, y: -5.9241815, z: -168.85693}
+  m_LocalPosition: {x: 53.83, y: 84.6, z: -100.09693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 275507401}
-  m_Father: {fileID: 370074735}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &789141310
 MonoBehaviour:
@@ -2735,6 +2716,56 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51467eddade4a6f42a3dbc68d74660d1, type: 3}
+--- !u!1 &838217608
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 838217610}
+  - component: {fileID: 838217609}
+  m_Layer: 0
+  m_Name: CameraManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &838217609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838217608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40f8491cf373d7f4197155007d836fba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultCamera: {fileID: 1793063468}
+  secondaryCamera: {fileID: 789141310}
+  WireMiniGamePrefab: {fileID: 1064227940}
+  BubbleMiniGamePrefab: {fileID: 0}
+  PauseMenu: {fileID: 1972781072121249571, guid: 2b6dcf5e2321f2649b8f98418a6919a3, type: 3}
+  interactionHud: {fileID: 2063454617}
+--- !u!4 &838217610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838217608}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 38.64, y: 0.41, z: 82.88393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &855283691
 GameObject:
   m_ObjectHideFlags: 0
@@ -6974,7 +7005,7 @@ Transform:
   m_GameObject: {fileID: 1862324206}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.858978, y: -5.9241815, z: -168.85693}
+  m_LocalPosition: {x: 39.29, y: 80.56, z: -168.85693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7733,6 +7764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactionText: {fileID: 95360949}
+  secondaryCameraScript: {fileID: 838217609}
 --- !u!114 &2063454619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7937,6 +7969,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1434694503}
+  - {fileID: 789141309}
+  - {fileID: 838217610}
   - {fileID: 370074735}
   - {fileID: 526359097}
   - {fileID: 1396811726}
