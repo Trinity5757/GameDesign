@@ -644,7 +644,7 @@ GameObject:
   - component: {fileID: 232309596}
   - component: {fileID: 232309595}
   m_Layer: 0
-  m_Name: Organic (3)
+  m_Name: GlassText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -724,7 +724,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -2336,7 +2336,7 @@ GameObject:
   - component: {fileID: 654218006}
   - component: {fileID: 654218005}
   m_Layer: 0
-  m_Name: Organic (1)
+  m_Name: MetalText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2416,7 +2416,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3548,7 +3548,7 @@ GameObject:
   - component: {fileID: 1089149216}
   - component: {fileID: 1089149215}
   m_Layer: 0
-  m_Name: Organic
+  m_Name: OrganicText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3628,7 +3628,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6157,7 +6157,7 @@ GameObject:
   - component: {fileID: 1714622851}
   - component: {fileID: 1714622850}
   m_Layer: 0
-  m_Name: Organic (2)
+  m_Name: PlasticText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6237,7 +6237,7 @@ MonoBehaviour:
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 4
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -6401,6 +6401,7 @@ GameObject:
   - component: {fileID: 1785875409}
   - component: {fileID: 1785875408}
   - component: {fileID: 1785875410}
+  - component: {fileID: 1785875411}
   m_Layer: 0
   m_Name: MaterialsPanel
   m_TagString: Untagged
@@ -6429,7 +6430,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 170, y: 350}
-  m_SizeDelta: {x: 220, y: 220}
+  m_SizeDelta: {x: 220, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1785875408
 MonoBehaviour:
@@ -6493,6 +6494,22 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!114 &1785875411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1785875406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4924b9b936238b44f8c6e8e5fb831cec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  organicText: {fileID: 1089149215}
+  metalText: {fileID: 654218005}
+  plasticText: {fileID: 1714622850}
+  glassText: {fileID: 232309595}
 --- !u!1001 &1795277589
 PrefabInstance:
   m_ObjectHideFlags: 0

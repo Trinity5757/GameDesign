@@ -20,9 +20,13 @@ public class Inventory : MonoBehaviour
         }
         
         materialData = SaveData.Load();
-
     }
-    
+
+    private void Start()
+    {
+        MaterialsHUD.instance.UpdateMaterialHUD();
+    }
+
     public MaterialData GetMaterialData()
     {
         return materialData; // Allow access to MaterialData

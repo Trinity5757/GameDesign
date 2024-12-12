@@ -56,6 +56,6 @@ public class ResourceObject : MonoBehaviour
         }
         //Debug.Log("Metal Amount: " + _materials.metal);
         Inventory.Instance.SaveInventory();
-
+        MaterialsHUD.instance.UpdateMaterialHUD();
     }
 }
