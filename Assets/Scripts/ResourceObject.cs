@@ -15,6 +15,23 @@ public class ResourceObject : MonoBehaviour
 
     private MaterialData _materials;
 
+    public float bobAmount = 0.5f;
+    public float bobSpeed = 1f;
+    private Vector3 startPos;
+
+    private void Start()
+    {
+        startPos = transform.position;
+    }
+
+    private void Update()
+    {
+        float newY = startPos.y + Mathf.Sin(Time.time * bobSpeed) * bobAmount;
+
+        // Apply the new position
+        transform.position = new Vector3(startPos.x, newY, startPos.z);
+    }
+
     public void Interact()
     {
         _materials = Inventory.Instance.GetMaterialData();

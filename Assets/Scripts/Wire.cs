@@ -96,4 +96,24 @@ public class Wire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHand
         _isDragStarted = false;
         _wireTask.CurrentDraggedWire = null;
     }
+    
+    public void ResetWire()
+    {
+        // Reset the success state
+        IsSuccess = false;
+
+        // Clear the LineRenderer positions
+        if (_lineRenderer != null)
+        {
+            _lineRenderer.SetPosition(0, Vector3.zero);
+            _lineRenderer.SetPosition(1, Vector3.zero);
+        }
+
+        // Reset the wire's color to transparent or a default color
+        Color defaultColor = new Color(1, 1, 1, 0); // Transparent white
+        SetColor(defaultColor);
+
+        // Reset drag state
+        _isDragStarted = false;
+    }
 }
