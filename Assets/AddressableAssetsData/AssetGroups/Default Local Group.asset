@@ -16,12 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 8987ace84fb4ab34bb13abd7c794ab80
-  m_SerializeEntries:
-  - m_GUID: 4012b1bce7668964c9dd124c32c2dc39
-    m_Address: ional-background-corporate-city-273359.mp3rate-city-273359.mp3
-    m_ReadOnly: 0
-    m_SerializedLabels: []
-    FlaggedDuringContentUpdateRestriction: 0
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 95d70d5f0a9d37546b5465281f9b362e, type: 2}
   m_SchemaSet:

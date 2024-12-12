@@ -38,9 +38,9 @@ public class AudioManager : MonoBehaviour
 
     public void PlayCollisionSound()
     {
-        if(bowRelease != null)
+        if(collisionSound != null)
         {
-            bowRelease.Play();
+            collisionSound.Play();
         }
     }
 
