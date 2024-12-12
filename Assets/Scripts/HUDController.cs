@@ -14,15 +14,20 @@ public class HUDController : MonoBehaviour
 
     [SerializeField] TMP_Text interactionText;
 
+    public SecondaryCamera secondaryCameraScript;
+
     public void EnableInteractionText(string text)
     {
         interactionText.text = text + " [E]"; //TODO: Change this hardcoded input  
         interactionText.gameObject.SetActive(true);
+
+        secondaryCameraScript.StartInteractionHub();
     }
 
     public void DisableInteractionText()
     {
         interactionText.gameObject.SetActive(false);
+        secondaryCameraScript.ReturnToMainCamera(); 
     }
 
 }
