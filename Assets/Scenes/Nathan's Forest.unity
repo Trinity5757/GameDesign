@@ -7420,8 +7420,8 @@ MonoBehaviour:
   dialogueBox: {fileID: 1368659026}
   speakerName: Wisdom Giver
   dialogueStack:
-  - This GitHub...
-  - ... needs a hero.
+  - Check out the workbench to start building!
+  - This GitHub needs a hero.
   - /githubHero.png
   delayBetweenCharacters: 0.05
 --- !u!224 &1693681604
