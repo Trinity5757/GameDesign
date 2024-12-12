@@ -11,6 +11,8 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     private MaterialData _materialData;
 
+    public SecondaryCamera secondaryCameraScript;
+
     // Will update the game to check to see if it is paused 
     void Update()
     {
@@ -38,6 +40,8 @@ public class PauseMenu : MonoBehaviour
         // Hide and lock the cursor for gameplay
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        secondaryCameraScript.ReturnToMainCamera();
     }
 
     // Will pause the game
@@ -51,6 +55,8 @@ public class PauseMenu : MonoBehaviour
         // Unlock and show the cursor for UI interaction
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+
+        secondaryCameraScript.StartPauseMenu();
     }
 
     public void Save()

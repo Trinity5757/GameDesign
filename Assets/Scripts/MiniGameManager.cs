@@ -10,6 +10,8 @@ public class MiniGameManager : MonoBehaviour
     public GameObject confirmationUI; // Confirmation UI
     public GameObject finishingUI;
 
+    public SecondaryCamera secondaryCameraScript;
+
     private void Start()
     {
         // Ensure all mini-games are inactive initially
@@ -49,6 +51,7 @@ public class MiniGameManager : MonoBehaviour
         Debug.Log("current mini game index: " + currentMiniGameIndex);
         confirmationUI.SetActive(false);
         finishingUI.SetActive(false);
+        secondaryCameraScript.ReturnToMainCamera();
     }
 
     public void StartMiniGameSequence()
@@ -59,6 +62,7 @@ public class MiniGameManager : MonoBehaviour
         }
         
         currentMiniGameIndex = 0; //if we quit restart the index
+        secondaryCameraScript.StartBubbleMiniGame();
 
         StartNextMiniGame();
     }
@@ -84,6 +88,10 @@ public class MiniGameManager : MonoBehaviour
             currentMiniGameInstance = miniGames[currentMiniGameIndex];
             currentMiniGameInstance.SetActive(true);
 
+            secondaryCameraScript.StartWireMiniGame();
+
+
+            // Attach callback to the mini-game's completion
             // Attach callbacks to the mini-game
             MiniGame miniGameLogic = currentMiniGameInstance.GetComponent<MiniGame>();
             if (miniGameLogic != null)
